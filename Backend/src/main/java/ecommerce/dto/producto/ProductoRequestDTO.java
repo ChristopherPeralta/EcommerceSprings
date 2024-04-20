@@ -20,7 +20,7 @@ public record ProductoRequestDTO(
         @Min(0)
         Integer stock,
         String imagen,
-        @NotBlank
-        String categoria
+        @NotNull
+        Long categoriaId
 ) {
 }
