@@ -22,7 +22,7 @@ public class Orden {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    private UsuarioEntity usuarioEntity;
+    private UserEntity userEntity;
 
     @JsonIgnore//siempre pon esto,,para q no te cree un bucle infinito
     @OneToMany(mappedBy = "orden",fetch = FetchType.EAGER)

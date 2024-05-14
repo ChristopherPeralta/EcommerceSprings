@@ -73,6 +73,4 @@ public class CategoriaServiceImpl implements CategoriaService {
     public void delete(Long id) {
         categoriaRepository.deleteById(id);
     }
-
-
 }

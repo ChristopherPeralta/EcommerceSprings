@@ -1,6 +1,6 @@
 package ecommerce.model;
 
-public enum Erol {
+public enum Role {
 
     ADMIN,
     CLIENTE

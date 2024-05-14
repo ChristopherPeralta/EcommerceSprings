@@ -1,18 +1,15 @@
 package ecommerce.service.impl;
 
-import ecommerce.dto.categoria.CategoriaResponseDTO;
 import ecommerce.dto.detail.OrdenDetailRequestDTO;
 import ecommerce.dto.orden.OrdenRequestDTO;
 import ecommerce.dto.orden.OrdenResponseDTO;
-import ecommerce.dto.producto.ProductoResponseDTO;
 import ecommerce.model.*;
 import ecommerce.repository.OrdenDetalleRepository;
 import ecommerce.repository.OrdenRepository;
 import ecommerce.repository.ProductoRepository;
-import ecommerce.repository.UsuarioEntityRepository;
+import ecommerce.repository.UserEntityRepository;
 import ecommerce.service.OrdenService;
 import jakarta.persistence.EntityNotFoundException;
-import org.aspectj.weaver.ast.Or;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +31,7 @@ public class OrdenServiceImpl implements OrdenService {
     private ProductoRepository productoRepository;
 
     @Autowired
-    private UsuarioEntityRepository usuarioEntityRepository;
+    private UserEntityRepository userEntityRepository;
 
     @Override
     public List<OrdenResponseDTO> findAll() {
@@ -56,7 +53,7 @@ public class OrdenServiceImpl implements OrdenService {
 
         try {
             // Buscar al usuario por su ID
-            UsuarioEntity usuario = usuarioEntityRepository.findById(ordenRequestDTO.usuarioId())
+            UserEntity usuario = userEntityRepository.findById(ordenRequestDTO.usuarioId())
                     .orElseThrow(() -> new ServiceException("Usuario no encontrado con ID: " + ordenRequestDTO.usuarioId()));
 
             Orden orden = new Orden();
@@ -85,7 +82,7 @@ public class OrdenServiceImpl implements OrdenService {
             }
 
             orden.setTotal(totalOrden);// Asignamos el total a la orden
-            orden.setUsuarioEntity(usuario);
+            orden.setUserEntity(usuario);
             orden.setOrdenDetailList(ordenDetailList);
 
             Orden ordenSaved = ordenRepository.save(orden);

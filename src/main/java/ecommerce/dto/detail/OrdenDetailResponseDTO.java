@@ -10,13 +10,15 @@ public record OrdenDetailResponseDTO(
         Double precio,
         Double subtotal,
         String producto,
+
+        String imagen,
         Long ordenId
 
 ) {
     public OrdenDetailResponseDTO(OrdenDetail ordenDetail) {
         this(ordenDetail.getId(), ordenDetail.getCantidad(), ordenDetail.getPrecio(),
                 ordenDetail.getSubtotal(),ordenDetail.getProducto().getNombre(),
-                ordenDetail.getOrden().getId());
+                ordenDetail.getProducto().getImagen(),ordenDetail.getOrden().getId());
     }
 
 

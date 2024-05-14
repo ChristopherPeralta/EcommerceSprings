@@ -14,7 +14,7 @@ import java.util.Set;
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioEntity {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,13 +28,13 @@ public class UsuarioEntity {
 
     private Boolean estado;
 
-    @OneToMany(mappedBy = "usuarioEntity")
+    @OneToMany(mappedBy = "userEntity")
     @JsonIgnore
     private List<Orden> ordenList;
 
-    @ManyToMany(fetch = FetchType.EAGER,targetEntity = RolEntity.class,cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER,targetEntity = RoleEntity.class,cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_roles",joinColumns = @JoinColumn(name = "id_user"),
             inverseJoinColumns = @JoinColumn(name = "id_rol"))
-    private Set<RolEntity> roles;
+    private Set<RoleEntity> roles;
 
 }

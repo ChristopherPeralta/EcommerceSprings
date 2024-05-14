@@ -10,13 +10,13 @@ import lombok.*;
 @Table(name = "roles")
 @AllArgsConstructor
 @NoArgsConstructor
-public class RolEntity {
+public class RoleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRol;
 
     @Enumerated(EnumType.STRING)
-    private Erol name;
+    private Role name;
 
 }

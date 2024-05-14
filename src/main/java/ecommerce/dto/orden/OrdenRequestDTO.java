@@ -11,9 +11,7 @@ import java.util.List;
 
 public record OrdenRequestDTO(
 
-        @NotNull
-        @DecimalMin("0.0")
-        Double total,
+
         @NotNull
         Long usuarioId,
 
