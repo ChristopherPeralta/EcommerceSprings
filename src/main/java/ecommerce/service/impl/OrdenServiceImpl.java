@@ -13,6 +13,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,7 @@ public class OrdenServiceImpl implements OrdenService {
     }
 
     @Override
+    @Transactional
     public OrdenResponseDTO save(OrdenRequestDTO ordenRequestDTO) {
 
         try {
@@ -100,6 +102,7 @@ public class OrdenServiceImpl implements OrdenService {
     }
 
     @Override
+    @Transactional
     public OrdenResponseDTO updateDetail(Long orderId, Long detailId, OrdenDetail updatedDetail) {
 
         try {
